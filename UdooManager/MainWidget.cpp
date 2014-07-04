@@ -17,6 +17,8 @@ MainWidget::MainWidget(QWidget *parent) :
 
 	ui->channels->setLayout(new QVBoxLayout);
 
+	ui->trackCount->setValue(4);
+	// Need to do this because no event loop yet
 	addChannel();addChannel();addChannel();addChannel();
 
 	qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertStretch(-1);
@@ -30,10 +32,12 @@ MainWidget::~MainWidget()
 void MainWidget::changeTrackCount(int newCount)
 {
 	int oldCount = ui->channels->layout()->count() - 1;
+	qDebug() << "Old number : " << oldCount;
+	qDebug() << "New number : " << newCount;
 
 	if(newCount < oldCount) // Suppression
 	{
-		int ret = QMessageBox::warning(this, tr("Éditeur de morceaux"),
+/*		int ret = QMessageBox::warning(this, tr("Éditeur de morceaux"),
 									   tr("Le nombre de pistes diminue.\n"
 										  "Êtes-vous sûr ?"),
 									   QMessageBox::Yes | QMessageBox::No,
@@ -44,6 +48,7 @@ void MainWidget::changeTrackCount(int newCount)
 			ui->trackCount->setValue(oldCount);
 			return;
 		}
+		*/
 
 		for(int i = oldCount; i --> newCount;)
 			removeChannel();
@@ -63,17 +68,28 @@ void MainWidget::save()
 												"Sauvegarder",
 												QString(),
 												"Data file (*.ini)"));
-
-
 }
 
 void MainWidget::load()
 {
+	savemanager->load(QFileDialog::getOpenFileName(this,
+												   "Charger",
+												   QString(),
+												   "Data file (*.ini)"));
+}
 
+void MainWidget::reinit()
+{
+	clearChannels();
+
+	ui->songName->setText("");
+	ui->tempo->setValue(120);
+	ui->trackCount->setValue(4);
 }
 
 void MainWidget::addChannel()
 {
+	qDebug() << "addChannel()";
 	channels <<  new ChannelEditor(this);
 
 	qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertWidget(ui->channels->layout()->count() - 1,
@@ -82,9 +98,19 @@ void MainWidget::addChannel()
 
 void MainWidget::removeChannel()
 {
+	qDebug() << ui->channels->layout()->count() - 2;
 	auto it = ui->channels->layout()->itemAt(ui->channels->layout()->count() - 2);
 
 	ui->channels->layout()->removeItem(it);
+	ui->channels->layout()->update();
+
+	channels.removeAll(qobject_cast<ChannelEditor*>(it->widget()));
+
 	delete it->widget();
 	delete it;
+}
+
+void MainWidget::clearChannels()
+{
+	ui->trackCount->setValue(0);
 }

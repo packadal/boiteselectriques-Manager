@@ -90,6 +90,7 @@
     <slot>save()</slot>
     <slot>load()</slot>
     <slot>new()</slot>
+    <slot>reinit()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -140,6 +141,22 @@
     <hint type="destinationlabel">
      <x>199</x>
      <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionNouveau</sender>
+   <signal>triggered()</signal>
+   <receiver>centralWidget</receiver>
+   <slot>reinit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>162</y>
     </hint>
    </hints>
   </connection>

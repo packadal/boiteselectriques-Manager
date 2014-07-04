@@ -55,6 +55,8 @@ class ChannelEditor : public QWidget
 			m_box = arg;
 		}
 
+		void chooseFile();
+
 	private:
 		Ui::ChannelEditor *ui;
 		QString m_name{};

@@ -22,11 +22,15 @@ class MainWidget : public QWidget
 		void changeTrackCount(int);
 		void save();
 		void load();
+		void reinit();
+
 
 	private:
 		// Agissent à la fin.
 		void addChannel();
+		void addChannel(QString name, int box);
 		void removeChannel();
+		void clearChannels();
 		Ui::MainWidget *ui;
 		QList<ChannelEditor*> channels;
 

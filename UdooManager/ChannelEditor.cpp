@@ -1,5 +1,6 @@
 #include "ChannelEditor.h"
 #include "ui_ChannelEditor.h"
+#include <QFileDialog>
 
 ChannelEditor::ChannelEditor(QWidget *parent) :
 	QWidget(parent),
@@ -11,4 +12,16 @@ ChannelEditor::ChannelEditor(QWidget *parent) :
 ChannelEditor::~ChannelEditor()
 {
 	delete ui;
+}
+
+void ChannelEditor::chooseFile()
+{
+	QFile f{QFileDialog::getOpenFileName(this,
+												"Choisir un fichier audio",
+												QString(),
+												"Audio file (*.wav *.mp3 *.ogg *.flac)")};
+	if(f.exists())
+	{
+		setName(QFileInfo(f).fileName());
+	}
 }

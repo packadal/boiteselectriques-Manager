@@ -120,6 +120,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ChannelEditor</receiver>
+   <slot>chooseFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>nameChanged(QString)</signal>
@@ -128,5 +144,6 @@
   <slot>setName(QString)</slot>
   <slot>priv_setName(QString)</slot>
   <slot>priv_setBox(int)</slot>
+  <slot>chooseFile()</slot>
  </slots>
 </ui>
