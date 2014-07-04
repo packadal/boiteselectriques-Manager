@@ -32,8 +32,6 @@ MainWidget::~MainWidget()
 void MainWidget::changeTrackCount(int newCount)
 {
 	int oldCount = ui->channels->layout()->count() - 1;
-	qDebug() << "Old number : " << oldCount;
-	qDebug() << "New number : " << newCount;
 
 	if(newCount < oldCount) // Suppression
 	{
@@ -89,7 +87,6 @@ void MainWidget::reinit()
 
 void MainWidget::addChannel()
 {
-	qDebug() << "addChannel()";
 	channels <<  new ChannelEditor(this);
 
 	qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertWidget(ui->channels->layout()->count() - 1,
@@ -98,7 +95,6 @@ void MainWidget::addChannel()
 
 void MainWidget::removeChannel()
 {
-	qDebug() << ui->channels->layout()->count() - 2;
 	auto it = ui->channels->layout()->itemAt(ui->channels->layout()->count() - 2);
 
 	ui->channels->layout()->removeItem(it);

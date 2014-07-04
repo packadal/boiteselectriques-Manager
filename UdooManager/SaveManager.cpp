@@ -48,8 +48,6 @@ void SaveManager::load(QString name)
 	int n = mw->ui->trackCount->value();
 	for(int i = 0; i < n; ++i)
 	{
-		//mw->addChannel();
-		qDebug() << n  << mw->channels.size() << i;
 		mw->channels[i]->setName(settings.value(QString("Track%1/filename").arg(i)).toString());
 		mw->channels[i]->setBox(settings.value(QString("Track%1/boxnumber").arg(i)).toInt());
 	}
