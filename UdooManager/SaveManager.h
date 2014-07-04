@@ -9,10 +9,6 @@ class SaveManager : public QObject
 	public:
 		explicit SaveManager(QObject *parent = 0);
 
-
-
-	signals:
-
 	public slots:
 		void save(QString name);
 		void load(QString name);

@@ -4,7 +4,6 @@
 #include "ui_MainWidget.h"
 #include "ChannelEditor.h"
 
-#include <qdebug.h>
 SaveManager::SaveManager(QObject *parent) :
 	QObject(parent)
 {

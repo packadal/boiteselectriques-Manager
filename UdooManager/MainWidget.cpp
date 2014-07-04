@@ -35,7 +35,7 @@ void MainWidget::changeTrackCount(int newCount)
 
 	if(newCount < oldCount) // Suppression
 	{
-/*		int ret = QMessageBox::warning(this, tr("Éditeur de morceaux"),
+		/*		int ret = QMessageBox::warning(this, tr("Éditeur de morceaux"),
 									   tr("Le nombre de pistes diminue.\n"
 										  "Êtes-vous sûr ?"),
 									   QMessageBox::Yes | QMessageBox::No,
@@ -63,17 +63,19 @@ void MainWidget::changeTrackCount(int newCount)
 void MainWidget::save()
 {
 	savemanager->save(QFileDialog::getSaveFileName(this,
-												"Sauvegarder",
-												QString(),
-												"Data file (*.ini)"));
+												   "Sauvegarder",
+												   QString(),
+												   "Data file (*.ini)"));
 }
 
 void MainWidget::load()
 {
-	savemanager->load(QFileDialog::getOpenFileName(this,
-												   "Charger",
-												   QString(),
-												   "Data file (*.ini)"));
+	QString file = QFileDialog::getOpenFileName(this,
+												"Charger",
+												QString(),
+												"Data file (*.ini)");
+	if(!file.isEmpty())
+		savemanager->load(file);
 }
 
 void MainWidget::reinit()

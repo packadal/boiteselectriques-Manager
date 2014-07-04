@@ -24,7 +24,6 @@ class MainWidget : public QWidget
 		void load();
 		void reinit();
 
-
 	private:
 		// Agissent à la fin.
 		void addChannel();
