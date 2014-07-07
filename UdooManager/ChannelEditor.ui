@@ -16,32 +16,42 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="filename"/>
      </item>
-     <item row="0" column="0">
+     <item row="0" column="2">
       <widget class="QLabel" name="label">
        <property name="text">
         <string>Fichier</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="2" column="2">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Boite</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="2" column="3">
       <widget class="QSpinBox" name="spinBox"/>
      </item>
-     <item row="0" column="2">
+     <item row="0" column="4">
       <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>Charger</string>
        </property>
       </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="name"/>
      </item>
     </layout>
    </item>
@@ -57,10 +67,10 @@
  <resources/>
  <connections>
   <connection>
-   <sender>lineEdit</sender>
+   <sender>filename</sender>
    <signal>textEdited(QString)</signal>
    <receiver>ChannelEditor</receiver>
-   <slot>priv_setName(QString)</slot>
+   <slot>priv_setFilename(QString)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>142</x>
@@ -91,7 +101,7 @@
   <connection>
    <sender>ChannelEditor</sender>
    <signal>nameChanged(QString)</signal>
-   <receiver>lineEdit</receiver>
+   <receiver>name</receiver>
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -99,8 +109,8 @@
      <y>5</y>
     </hint>
     <hint type="destinationlabel">
-     <x>90</x>
-     <y>18</y>
+     <x>140</x>
+     <y>20</y>
     </hint>
    </hints>
   </connection>
@@ -136,14 +146,48 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>name</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ChannelEditor</receiver>
+   <slot>priv_setName(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ChannelEditor</sender>
+   <signal>filenameChanged(QString)</signal>
+   <receiver>filename</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>289</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>386</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>nameChanged(QString)</signal>
   <signal>boxChanged(int)</signal>
+  <signal>filenameChanged(QString)</signal>
   <slot>setBox(int)</slot>
   <slot>setName(QString)</slot>
   <slot>priv_setName(QString)</slot>
   <slot>priv_setBox(int)</slot>
   <slot>chooseFile()</slot>
+  <slot>priv_setFilename(QString)</slot>
  </slots>
 </ui>

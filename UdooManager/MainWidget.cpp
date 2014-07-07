@@ -17,11 +17,10 @@ MainWidget::MainWidget(QWidget *parent) :
 
 	ui->channels->setLayout(new QVBoxLayout);
 
-	ui->trackCount->setValue(4);
 	// Need to do this because no event loop yet
 	addChannel();addChannel();addChannel();addChannel();
 
-	qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertStretch(-1);
+	//qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertStretch(-1);
 }
 
 MainWidget::~MainWidget()
@@ -31,7 +30,7 @@ MainWidget::~MainWidget()
 
 void MainWidget::changeTrackCount(int newCount)
 {
-	int oldCount = ui->channels->layout()->count() - 1;
+	int oldCount = ui->channels->layout()->count();
 
 	if(newCount < oldCount) // Suppression
 	{
@@ -50,7 +49,6 @@ void MainWidget::changeTrackCount(int newCount)
 
 		for(int i = oldCount; i --> newCount;)
 			removeChannel();
-
 	}
 	else if(newCount > oldCount) // Ajout
 	{
@@ -91,19 +89,17 @@ void MainWidget::addChannel()
 {
 	channels <<  new ChannelEditor(this);
 
-	qobject_cast<QVBoxLayout*>(ui->channels->layout())->insertWidget(ui->channels->layout()->count() - 1,
-																	 channels.last());
+	qobject_cast<QVBoxLayout*>(ui->channels->layout())->addWidget(channels.last());
 }
 
 void MainWidget::removeChannel()
 {
-	auto it = ui->channels->layout()->itemAt(ui->channels->layout()->count() - 2);
+	auto it = ui->channels->layout()->itemAt(ui->channels->layout()->count() - 1);
 
 	ui->channels->layout()->removeItem(it);
-	ui->channels->layout()->update();
+//	ui->channels->layout()->update();
 
-	channels.removeAll(qobject_cast<ChannelEditor*>(it->widget()));
-
+	channels.removeLast();
 	delete it->widget();
 	delete it;
 }

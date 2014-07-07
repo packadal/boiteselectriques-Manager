@@ -22,6 +22,6 @@ void ChannelEditor::chooseFile()
 												"Audio file (*.wav *.mp3 *.ogg *.flac)")};
 	if(f.exists())
 	{
-		setName(QFileInfo(f).fileName());
+		setFilename(QFileInfo(f).fileName());
 	}
 }

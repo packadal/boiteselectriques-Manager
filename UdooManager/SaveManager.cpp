@@ -14,6 +14,7 @@ void SaveManager::save(QString name)
 	MainWidget* mw = qobject_cast<MainWidget*>(parent());
 
 	QSettings settings(name, QSettings::IniFormat);
+	settings.clear();
 
 	settings.setValue("General/songName",
 					  mw->ui->songName->text());
@@ -24,11 +25,14 @@ void SaveManager::save(QString name)
 
 	for(int i = 0; i < mw->channels.size(); ++i)
 	{
-		qDebug()<< i ;
-		settings.setValue(QString("Track%1/filename").arg(i),
+		settings.setValue(QString("Track%1/name").arg(i),
 						  mw->channels[i]->getName());
+		settings.setValue(QString("Track%1/filename").arg(i),
+						  mw->channels[i]->getFilename());
 		settings.setValue(QString("Track%1/boxnumber").arg(i),
 						  mw->channels[i]->getBox());
+		settings.setValue(QString("Track%1/volume").arg(i), 80);
+		settings.setValue(QString("Track%1/pan").arg(i), 0);
 	}
 }
 
@@ -47,7 +51,8 @@ void SaveManager::load(QString name)
 	int n = mw->ui->trackCount->value();
 	for(int i = 0; i < n; ++i)
 	{
-		mw->channels[i]->setName(settings.value(QString("Track%1/filename").arg(i)).toString());
+		mw->channels[i]->setName(settings.value(QString("Track%1/name").arg(i)).toString());
+		mw->channels[i]->setFilename(settings.value(QString("Track%1/filename").arg(i)).toString());
 		mw->channels[i]->setBox(settings.value(QString("Track%1/boxnumber").arg(i)).toInt());
 	}
 
