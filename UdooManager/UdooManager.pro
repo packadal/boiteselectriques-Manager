@@ -17,13 +17,16 @@ SOURCES += main.cpp\
 		MainWindow.cpp \
 	MainWidget.cpp \
 	ChannelEditor.cpp \
-    SaveManager.cpp
+	SaveManager.cpp
 
 HEADERS  += MainWindow.h \
 	MainWidget.h \
 	ChannelEditor.h \
-    SaveManager.h
+	SaveManager.h
 
 FORMS    += MainWindow.ui \
 	MainWidget.ui \
 	ChannelEditor.ui
+
+INCLUDEPATH += /usr/local/include/KF5/KArchive
+LIBS += -lKF5Archive

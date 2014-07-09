@@ -63,7 +63,7 @@ void MainWidget::save()
 	savemanager->save(QFileDialog::getSaveFileName(this,
 												   "Sauvegarder",
 												   QString(),
-												   "Data file (*.ini)"));
+												   "Morceau (*.song)"));
 }
 
 void MainWidget::load()
@@ -71,7 +71,7 @@ void MainWidget::load()
 	QString file = QFileDialog::getOpenFileName(this,
 												"Charger",
 												QString(),
-												"Data file (*.ini)");
+												"Morceau (*.song)");
 	if(!file.isEmpty())
 		savemanager->load(file);
 }

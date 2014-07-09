@@ -2,6 +2,8 @@
 #define SAVEMANAGER_H
 
 #include <QObject>
+#include <QTemporaryDir>
+#include <memory>
 
 class SaveManager : public QObject
 {
@@ -9,9 +11,13 @@ class SaveManager : public QObject
 	public:
 		explicit SaveManager(QObject *parent = 0);
 
+		std::shared_ptr<QTemporaryDir> tempdir{};
+
 	public slots:
-		void save(QString name);
+		void save(QString savepath);
 		void load(QString name);
+
+
 
 };
 
