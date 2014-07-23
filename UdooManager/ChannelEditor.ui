@@ -14,49 +14,71 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="3">
-      <widget class="QLineEdit" name="filename"/>
-     </item>
-     <item row="0" column="2">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Fichier</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="2">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Boite</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="3">
-      <widget class="QSpinBox" name="spinBox"/>
-     </item>
-     <item row="0" column="4">
+     <item row="1" column="4">
       <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>Charger</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Nom</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Boite</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Fichier</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="filename"/>
+     </item>
+     <item row="1" column="1">
       <widget class="QLineEdit" name="name"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="box_id">
+       <property name="text">
+        <string notr="true"/>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
    <item>
     <widget class="Line" name="line">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>24</height>
+      </size>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -73,28 +95,12 @@
    <slot>priv_setFilename(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>27</y>
+     <x>434</x>
+     <y>31</y>
     </hint>
     <hint type="destinationlabel">
      <x>578</x>
      <y>41</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>spinBox</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>ChannelEditor</receiver>
-   <slot>priv_setBox(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>120</x>
-     <y>46</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>575</x>
-     <y>2</y>
     </hint>
    </hints>
   </connection>
@@ -111,22 +117,6 @@
     <hint type="destinationlabel">
      <x>140</x>
      <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ChannelEditor</sender>
-   <signal>boxChanged(int)</signal>
-   <receiver>spinBox</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>574</x>
-     <y>75</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>364</x>
-     <y>50</y>
     </hint>
    </hints>
   </connection>
@@ -175,6 +165,22 @@
     <hint type="destinationlabel">
      <x>386</x>
      <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ChannelEditor</sender>
+   <signal>boxChanged(int)</signal>
+   <receiver>box_id</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>550</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>76</x>
+     <y>56</y>
     </hint>
    </hints>
   </connection>

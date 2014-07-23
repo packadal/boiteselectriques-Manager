@@ -90,6 +90,7 @@ void MainWidget::addChannel()
 	channels <<  new ChannelEditor(this);
 
 	qobject_cast<QVBoxLayout*>(ui->channels->layout())->addWidget(channels.last());
+	channels.last()->setBox(channels.size() - 1);
 }
 
 void MainWidget::removeChannel()
