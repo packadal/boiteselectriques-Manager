@@ -31,6 +31,10 @@ void SaveManager::save(QString savepath)
 					  mw->ui->tempo->value());
 	settings.setValue("General/trackCount",
 					  mw->ui->trackCount->value());
+	settings.setValue("General/sigNumerator",
+					  mw->ui->numerateur->value());
+	settings.setValue("General/sigDenominator",
+					  mw->ui->denominateur->value());
 
 	for(int i = 0; i < mw->channels.size(); ++i)
 	{
@@ -105,6 +109,8 @@ void SaveManager::load(QString loadpath)
 	mw->ui->songName->setText(settings.value("General/songName").toString());
 	mw->ui->tempo->setValue(settings.value("General/tempo").toInt());
 	mw->ui->trackCount->setValue(settings.value("General/trackCount").toInt());
+	mw->ui->numerateur->setValue(settings.value("General/sigNumerator").toInt());
+	mw->ui->denominateur->setValue(settings.value("General/sigDenominator").toInt());
 
 	int n = mw->ui->trackCount->value();
 	for(int i = 0; i < n; ++i)
