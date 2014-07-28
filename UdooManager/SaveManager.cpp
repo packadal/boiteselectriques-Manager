@@ -15,13 +15,17 @@ SaveManager::SaveManager(QObject *parent) :
 void SaveManager::save(QString savepath)
 {
 	QString baseFilename = QFileInfo(savepath).baseName();
-	QString iniFullname  = QFileInfo(savepath).path() + "/" + baseFilename + ".ini";
+
+	QTemporaryDir saveDir;
+	QString iniFullname  = saveDir.path() + "/" + baseFilename + ".ini";
 	QString songFullname  = QFileInfo(savepath).path() + "/" + baseFilename + ".song";
 
 	MainWidget* mw = qobject_cast<MainWidget*>(parent());
 
 
 	//// Écriture du fichier de configuration ////
+
+	// TODO mettre dans dossier temp ou rm à la fin
 	QSettings settings(iniFullname, QSettings::IniFormat);
 	settings.clear();
 
@@ -59,8 +63,16 @@ void SaveManager::save(QString savepath)
 
 		for(int i = 0; i < mw->channels.size(); ++i)
 		{
-			archive.addLocalFile(mw->channels[i]->getFilename(),
-								 QFileInfo(mw->channels[i]->getFilename()).fileName());
+			QString filename = mw->channels[i]->getFilename();
+			if(!QFileInfo(filename).exists() && tempdir) // If we opened previously
+			{
+				qDebug() << "BEFORE:" << filename;
+				filename.prepend(tempdir->path() + "/");
+				qDebug() << "AFTER:" << filename;
+			}
+
+			archive.addLocalFile(filename,
+								 QFileInfo(filename).fileName());
 		}
 
 		archive.close();
