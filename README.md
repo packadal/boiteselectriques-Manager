@@ -1,4 +1,4 @@
-UdooManager
+Manager
 ===========
 
-Song manager for the Rock et Chansons Udoo project
+Song manager for the boitesElectriques project
