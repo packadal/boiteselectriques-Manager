@@ -26,16 +26,13 @@
       <string>Général</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="1">
-       <widget class="QSpinBox" name="trackCount">
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>16</number>
-        </property>
-        <property name="value">
-         <number>4</number>
+      <item row="2" column="0">
+       <layout class="QGridLayout" name="gridLayout_2"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Nom du morceau</string>
         </property>
        </widget>
       </item>
@@ -49,74 +46,23 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="trackCount">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>16</number>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Nombre de pistes</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Tempo</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Nom du morceau</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QSpinBox" name="tempo">
-        <property name="minimum">
-         <number>20</number>
-        </property>
-        <property name="maximum">
-         <number>300</number>
-        </property>
-        <property name="value">
-         <number>120</number>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QSpinBox" name="numerateur">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>32</number>
-          </property>
-          <property name="value">
-           <number>4</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QSpinBox" name="denominateur">
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>32</number>
-          </property>
-          <property name="value">
-           <number>4</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Signature</string>
         </property>
        </widget>
       </item>
@@ -139,7 +85,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>726</width>
+           <width>714</width>
            <height>16</height>
           </rect>
          </property>
