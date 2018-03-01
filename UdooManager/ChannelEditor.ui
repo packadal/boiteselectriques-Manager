@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>579</width>
-    <height>80</height>
+    <height>90</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -165,22 +165,6 @@
     <hint type="destinationlabel">
      <x>386</x>
      <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ChannelEditor</sender>
-   <signal>boxChanged(int)</signal>
-   <receiver>box_id</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>550</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>76</x>
-     <y>56</y>
     </hint>
    </hints>
   </connection>
