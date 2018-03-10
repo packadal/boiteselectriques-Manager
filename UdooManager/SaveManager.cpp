@@ -37,6 +37,8 @@ void SaveManager::save(QString savepath) {
                       mw->channels[i]->getBox());
     settings.setValue(QString("Track%1/volume").arg(i), 80);
     settings.setValue(QString("Track%1/pan").arg(i), 0);
+    settings.setValue(QString("Track%1/image").arg(i),
+                      QFileInfo(mw->channels[i]->getImage()).fileName());
   }
 
   settings.sync();
@@ -56,6 +58,17 @@ void SaveManager::save(QString savepath) {
       }
 
       archive.addLocalFile(filename, QFileInfo(filename).fileName());
+
+      QString imageFilename = mw->channels[i]->getImage();
+      if (!QFileInfo(imageFilename).exists() &&
+          tempdir)  // If we opened previously
+      {
+        qDebug() << "BEFORE:" << imageFilename;
+        imageFilename.prepend(tempdir->path() + "/");
+        qDebug() << "AFTER:" << imageFilename;
+      }
+
+      archive.addLocalFile(imageFilename, QFileInfo(imageFilename).fileName());
     }
 
     archive.close();
@@ -109,5 +122,7 @@ void SaveManager::load(QString loadpath) {
         settings.value(QString("Track%1/filename").arg(i)).toString());
     mw->channels[i]->setBox(
         settings.value(QString("Track%1/boxnumber").arg(i)).toInt());
+    mw->channels[i]->setImage(
+        settings.value(QString("Track%1/image").arg(i)).toString());
   }
 }

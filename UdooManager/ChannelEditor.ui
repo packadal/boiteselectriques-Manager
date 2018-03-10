@@ -28,17 +28,10 @@
    </property>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
-     <item row="1" column="4">
-      <widget class="QPushButton" name="pushButton">
+     <item row="1" column="2">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>Charger</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Nom</string>
+        <string>Fichier</string>
        </property>
       </widget>
      </item>
@@ -49,23 +42,47 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="2">
-      <widget class="QLabel" name="label">
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="name"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Fichier</string>
+        <string>Nom</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="7">
+      <widget class="QPushButton" name="loadImageButton">
+       <property name="text">
+        <string>Charger</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Charger</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="box_id">
+       <property name="text">
+        <string notr="true"/>
        </property>
       </widget>
      </item>
      <item row="1" column="3">
       <widget class="QLineEdit" name="filename"/>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="name"/>
+     <item row="1" column="6">
+      <widget class="QLineEdit" name="imageFileName"/>
      </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="box_id">
+     <item row="1" column="5">
+      <widget class="QLabel" name="imageLabel">
        <property name="text">
-        <string notr="true"/>
+        <string>Image</string>
        </property>
       </widget>
      </item>
@@ -168,16 +185,67 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>loadImageButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ChannelEditor</receiver>
+   <slot>chooseImageFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>735</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>388</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>imageFileName</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>ChannelEditor</receiver>
+   <slot>priv_setImageFilename(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>388</x>
+     <y>44</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ChannelEditor</sender>
+   <signal>imageChanged(QString)</signal>
+   <receiver>imageFileName</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>44</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>618</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <signal>nameChanged(QString)</signal>
   <signal>boxChanged(int)</signal>
   <signal>filenameChanged(QString)</signal>
+  <signal>imageChanged(QString)</signal>
   <slot>setBox(int)</slot>
   <slot>setName(QString)</slot>
   <slot>priv_setName(QString)</slot>
   <slot>priv_setBox(int)</slot>
   <slot>chooseFile()</slot>
   <slot>priv_setFilename(QString)</slot>
+  <slot>chooseImageFile()</slot>
+  <slot>priv_setImageFilename(QString)</slot>
  </slots>
 </ui>

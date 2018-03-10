@@ -25,3 +25,12 @@ void ChannelEditor::chooseFile() {
     setFilename(f.fileName());  // QFileInfo(f).fileName());
   }
 }
+
+void ChannelEditor::chooseImageFile() {
+  QFile f{QFileDialog::getOpenFileName(this, "Choisir un fichier audio",
+                                       QString(),
+                                       "Image file (*.jpeg *.jpg *.png)")};
+  if (f.exists()) {
+    setImage(f.fileName());  // QFileInfo(f).fileName());
+  }
+}
